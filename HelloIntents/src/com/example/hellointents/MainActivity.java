@@ -1,23 +1,23 @@
+
 package com.example.hellointents;
 
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         // ブラウザを起動するIntent
-        Button browserBtn = (Button)findViewById(R.id.btn_browser);
+        Button browserBtn = (Button) findViewById(R.id.btn_browser);
         browserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,17 +27,18 @@ public class MainActivity extends Activity {
         });
 
         // Mapを起動するIntent
-        Button mapBtn = (Button)findViewById(R.id.btn_map);
+        Button mapBtn = (Button) findViewById(R.id.btn_map);
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:36.0556,136.3565?z=16"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+                        .parse("geo:36.0556,136.3565?z=16"));
                 startActivity(intent);
             }
         });
-        
+
         // 電話を掛けるIntent
-        Button telBtn = (Button)findViewById(R.id.btn_tel);
+        Button telBtn = (Button) findViewById(R.id.btn_tel);
         telBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +50,9 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
 }
